@@ -231,7 +231,7 @@
     </div>
     <div class="container">
         <h2>Register for GirlUp Coders Cohort</h2>
-        <form id="registrationForm" action="send.php" method="POST" novalidate>
+        <form id="registrationForm" novalidate>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" class="form-control" required>
@@ -383,26 +383,7 @@ $(document).ready(function() {
             valid = false;
         }
 
-        if (valid) {
-            $('#loadingSpinner').show(); // Show loading spinner
-            $.ajax({
-                type: 'POST',
-                url: 'send.php',
-                data: formData,
-                success: function(response) {
-                    $('#loadingSpinner').hide(); // Hide loading spinner
-                    if(response === "success"){
-                        window.location.href = 'congratulations.html';
-                    } else {
-                        alert('There was an error processing your request. Please try again.');
-                    }
-                },
-                error: function() {
-                    $('#loadingSpinner').hide(); // Hide loading spinner
-                    alert('There was an error processing your request. Please try again.');
-                }
-            });
-        }
+    
     });
 
     // Clear error message on input
