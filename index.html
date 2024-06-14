@@ -382,7 +382,24 @@ $(document).ready(function() {
             $('#wpGroupError').text('This field is required.');
             valid = false;
         }
+  if (valid) {
+            $('#loadingSpinner').show(); // Show loading spinner
+            $.ajax({
 
+                success: function(response) {
+                    $('#loadingSpinner').hide(); // Hide loading spinner
+                    if(response === "success"){
+                        window.location.href = 'congratulations.html';
+                    } else {
+                        alert('There was an error processing your request. Please try again.');
+                    }
+                },
+                error: function() {
+                    $('#loadingSpinner').hide(); // Hide loading spinner
+                    alert('There was an error processing your request. Please try again.');
+                }
+            });
+        }
     
     });
 
